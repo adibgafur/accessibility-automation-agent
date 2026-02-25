@@ -28,9 +28,9 @@ src_dir = Path(__file__).parent / "src"
 if src_dir.exists():
     sys.path.insert(0, str(src_dir))
 
-# Import and run main
+# Import and run main from the src package (not the stale root main.py)
 try:
-    from main import main
+    from src.main import main
     if __name__ == "__main__":
         sys.exit(main())
 except Exception as e:
