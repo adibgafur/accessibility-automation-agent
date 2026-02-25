@@ -26,6 +26,7 @@ from utils.error_handler import (
     ErrorRecoveryHandler,
 )
 from utils.accessibility_helpers import notifier
+from app_controller import ApplicationController
 
 
 # ------------------------------------------------------------------
@@ -169,57 +170,115 @@ def main() -> None:
 
 def _run_gui(args: argparse.Namespace) -> None:
     """
-    Launch the PyQt6 graphical interface.
+    Launch the PyQt6 graphical interface (Phase 9) with integration (Phase 10).
 
-    Will be fully implemented in Phase 9.
+    Initializes the ApplicationController and launches the main UI window.
     """
-    logger.info("Launching graphical user interface...")
+    logger.info("Launching graphical user interface with Phase 10 integration...")
 
-    # TODO: Phase 9 implementation
-    # from PyQt6.QtWidgets import QApplication
-    # from ui.main_window import MainWindow
-    #
-    # app = QApplication(sys.argv)
-    # window = MainWindow(language=args.language)
-    # window.show()
-    # sys.exit(app.exec())
+    try:
+        from PyQt6.QtWidgets import QApplication
+        from ui.main_window import MainWindow
+        from optimization import ResourceManager
 
-    logger.info("GUI launch deferred to Phase 9 - application will exit")
-    notifier.notify("GUI will be available after Phase 9 implementation", "info")
+        # Create Qt application
+        app = QApplication.instance()
+        if app is None:
+            app = QApplication(sys.argv)
+
+        # Initialize resource manager for optimization
+        resource_mgr = ResourceManager()
+        resource_mgr.startup()
+        logger.info("Resource optimization started")
+
+        # Create and initialize application controller
+        controller = ApplicationController()
+        if not controller.startup():
+            logger.error("Failed to initialize application controller")
+            notifier.speak_error("Failed to start application. Check logs.")
+            return
+
+        logger.info("Application controller initialized successfully")
+
+        # Create and show main window
+        window = MainWindow(language=args.language, controller=controller)
+        window.show()
+
+        logger.info("Main window displayed - application ready")
+        notifier.notify(f"Accessibility Automation Agent started in {args.language}", "info")
+
+        # Run event loop
+        sys.exit(app.exec())
+
+    except ImportError as e:
+        logger.error(f"Failed to import required modules: {e}")
+        notifier.speak_error("Failed to load UI components.")
+        return
+    except Exception as e:
+        logger.error(f"GUI initialization error: {e}", exc_info=True)
+        notifier.speak_error("An error occurred while starting the application.")
+        raise
 
 
 def _run_headless() -> None:
     """
-    Run without UI - voice and eye-tracking only.
+    Run without UI - voice and eye-tracking only (Phase 10 integrated).
 
-    Will be fully implemented after core modules are complete.
+    Operates the application controller in headless mode with voice commands
+    and eye tracking only.
     """
-    logger.info("Running in headless mode...")
+    logger.info("Running in headless mode with Phase 10 integration...")
 
-    # TODO: Phase 4+ implementation
-    # from core.voice_engine import VoiceEngine
-    # from core.eye_tracker import EyeTracker
-    # from core.mouse_controller import MouseController
-    #
-    # voice = VoiceEngine(language=config.get("ui.language", "en"))
-    # voice.load_model()
-    # voice.start_listening()
-    #
-    # tracker = EyeTracker()
-    # tracker.start()
-    #
-    # mouse = MouseController()
-    #
-    # # Main event loop
-    # while True:
-    #     pos = tracker.get_nose_position()
-    #     if pos:
-    #         mouse.move_to(*pos)
-    #     if tracker.detect_blink():
-    #         mouse.click()
+    try:
+        from optimization import ResourceManager
 
-    logger.info("Headless mode deferred to Phase 4+ - application will exit")
-    notifier.notify("Headless mode will be available after Phase 4", "info")
+        # Initialize resource manager
+        resource_mgr = ResourceManager()
+        resource_mgr.startup()
+        logger.info("Resource optimization started")
+
+        # Create and initialize application controller
+        controller = ApplicationController()
+        if not controller.startup():
+            logger.error("Failed to initialize application controller")
+            notifier.speak_error("Failed to start application. Check logs.")
+            return
+
+        logger.info("Application controller initialized for headless mode")
+
+        # Start voice listening
+        if not controller.start_listening():
+            logger.error("Failed to start voice listening")
+            notifier.speak_error("Voice listening failed. Check microphone.")
+            controller.shutdown()
+            return
+
+        # Start eye tracking if available
+        if not controller.start_tracking():
+            logger.warning("Eye tracking not available, continuing without it")
+
+        logger.info("Headless mode active - waiting for voice commands")
+        notifier.notify("Headless mode started. Ready for voice commands.", "info")
+
+        # Main event loop - wait for KeyboardInterrupt
+        try:
+            while True:
+                import time
+                time.sleep(1)
+        except KeyboardInterrupt:
+            logger.info("Headless mode interrupted by user")
+
+    except Exception as e:
+        logger.error(f"Headless mode error: {e}", exc_info=True)
+        notifier.speak_error("An error occurred in headless mode.")
+        raise
+    finally:
+        if "controller" in locals():
+            controller.shutdown()
+            logger.info("Application controller shutdown")
+        if "resource_mgr" in locals():
+            resource_mgr.shutdown()
+            logger.info("Resource management shutdown")
 
 
 # ------------------------------------------------------------------
