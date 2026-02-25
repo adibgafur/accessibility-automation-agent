@@ -1,0 +1,112 @@
+# Accessibility Automation Agent - Default Settings
+
+application:
+  name: "Accessibility Automation Agent"
+  version: "0.1.0"
+  environment: "development"
+
+# Voice Control Settings
+voice:
+  enabled: true
+  language: "en"  # "en" for English, "bn" for Bengali
+  whisper_model: "base"  # "tiny", "base", "small", "medium", "large"
+  device: "cuda"  # "cpu" or "cuda"
+  confidence_threshold: 0.5
+  timeout: 30
+
+# Eye Tracking Settings
+eye_tracking:
+  enabled: true
+  camera_index: 0
+  fps: 30
+  smoothing_factor: 0.7
+  nose_scale: 1.0
+  calibration_points: 9
+  jitter_threshold: 5
+
+# Blink Detection
+blink_detection:
+  single_blink_threshold: 0.3
+  double_blink_timeout: 300  # milliseconds
+  eye_aspect_ratio_threshold: 0.2
+
+# GUI Detection Settings
+gui_detection:
+  primary_engine: "ufo2"  # Use UFO2 first
+  fallback_engine: "guirilla"  # Fallback to GUIrilla
+  ufo2_confidence_threshold: 0.7
+  guirilla_confidence_threshold: 0.5
+  auto_switch_on_failure: true
+  cache_detection_results: true
+  update_detection_enabled: true
+
+# UFO2 Configuration
+ufo2:
+  enabled: true
+  use_visual_detection: true
+  use_api_detection: true
+  hybrid_detection: true
+  screenshot_interval: 1000  # milliseconds
+
+# GUIrilla Configuration
+guirilla:
+  enabled: true
+  model: "macpaw-research/GUIrilla-See-0.7B"
+  quantization: "int8"  # For low-spec devices
+  confidence_threshold: 0.5
+  max_detections: 10
+
+# Browser Settings
+browser:
+  driver: "chrome"  # "chrome" or "firefox"
+  headless: false
+  implicit_wait: 10
+  page_load_timeout: 30
+
+# Macro Settings
+macro:
+  auto_save: true
+  save_interval: 5000  # milliseconds
+  max_macro_length: 10000  # actions
+  enable_variables: true
+
+# UI Settings
+ui:
+  theme: "dark"  # "light" or "dark"
+  font_size: 12
+  button_size: 64  # pixels
+  high_contrast: false
+  language: "en"  # "en" for English, "bn" for Bengali
+
+# Performance Settings
+performance:
+  max_cpu_threads: 4
+  gpu_enabled: true
+  memory_limit: 512  # MB
+  cache_size: 100  # MB
+
+# Logging Settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
+  max_file_size: 10485760  # 10 MB
+  backup_count: 5
+
+# Keyboard Shortcuts
+shortcuts:
+  start_recording_macro: "Ctrl+Alt+R"
+  stop_recording_macro: "Ctrl+Alt+S"
+  play_macro: "Ctrl+Alt+P"
+  toggle_eye_tracking: "Ctrl+Alt+E"
+  toggle_voice: "Ctrl+Alt+V"
+  emergency_stop: "Ctrl+Shift+Escape"
+
+# Accessibility Settings
+accessibility:
+  enable_audio_feedback: true
+  enable_visual_feedback: true
+  text_to_speech: true
+  keyboard_navigation: true
+  screen_reader_mode: false
+  min_contrast_ratio: 7  # WCAG AAA

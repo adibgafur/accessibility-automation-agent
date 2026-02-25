@@ -1,0 +1,38 @@
+{
+  "ui": {
+    "title": "অ্যাক্সেসিবিলিটি অটোমেশন এজেন্ট",
+    "voice_panel": "ভয়েস নিয়ন্ত্রণ",
+    "eye_tracking": "চোখ ট্র্যাকিং",
+    "automation": "অটোমেশন",
+    "settings": "সেটিংস",
+    "help": "সাহায্য",
+    "start": "শুরু করুন",
+    "stop": "থামান",
+    "record": "রেকর্ড করুন",
+    "play": "চালান",
+    "pause": "বিরাম",
+    "resume": "পুনরায় শুরু করুন"
+  },
+  "commands": {
+    "open": "খুলুন",
+    "close": "বন্ধ করুন",
+    "click": "ক্লিক করুন",
+    "type": "টাইপ করুন",
+    "copy": "কপি করুন",
+    "paste": "পেস্ট করুন",
+    "select": "নির্বাচন করুন",
+    "delete": "মুছে ফেলুন",
+    "search": "খুঁজুন"
+  },
+  "messages": {
+    "listening": "শুনছি...",
+    "processing": "প্রক্রিয়া করছি...",
+    "success": "সফল",
+    "error": "ত্রুটি",
+    "calibration": "ক্যালিব্রেশন",
+    "calibration_complete": "ক্যালিব্রেশন সম্পন্ন",
+    "recording_started": "রেকর্ডিং শুরু হয়েছে",
+    "recording_stopped": "রেকর্ডিং বন্ধ হয়েছে",
+    "macro_played": "ম্যাক্রো চালু হয়েছে"
+  }
+}

@@ -1,0 +1,46 @@
+# UFO2 Configuration for Accessibility Automation Agent
+
+ufo2:
+  # Model settings
+  model:
+    use_visual: true
+    use_uia: true
+    hybrid_mode: true
+    device: "cuda"  # "cpu" or "cuda"
+    dtype: "float32"  # or "float16" for smaller models
+
+  # Detection parameters
+  detection:
+    confidence_threshold: 0.7
+    nms_threshold: 0.4
+    max_detections: 50
+    timeout: 5  # seconds
+
+  # Visual detection (screenshot-based)
+  visual:
+    enabled: true
+    screenshot_type: "full"  # "full" or "region"
+    region: null  # null for full screen
+    enhancement: "auto"  # "none", "auto", "contrast", "brightness"
+
+  # UIA detection (Windows native)
+  uia:
+    enabled: true
+    include_invisible: false
+    cache_elements: true
+    cache_timeout: 5  # seconds
+
+  # Performance settings
+  performance:
+    batch_processing: true
+    batch_size: 4
+    parallel_workers: 2
+    gpu_acceleration: true
+
+  # Logging
+  logging:
+    enabled: true
+    level: "INFO"
+    log_file: "logs/ufo2.log"
+    log_detections: true
+    save_screenshots: false

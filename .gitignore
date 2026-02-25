@@ -1,0 +1,99 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ML Models & Cache
+*.cache/
+models/
+model_cache/
+*.onnx
+*.pt
+*.pth
+
+# Config & Secrets
+.env
+.env.local
+config/secrets.yaml
+config/credentials.json
+
+# Logs
+/logs/
+*.log
+data/logs/*
+!data/logs/.gitkeep
+
+# Macros & User Data
+data/macros/*
+!data/macros/.gitkeep
+
+# Build artifacts
+build/*
+!build/installer/
+build/installer/*
+!build/installer/.gitkeep
+dist/
+*.whl
+*.exe
+*.msi
+
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini

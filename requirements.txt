@@ -1,0 +1,53 @@
+# Core Dependencies
+python-dotenv==1.0.0
+PyYAML==6.0.1
+pydantic==2.5.0
+
+# UI Framework
+PyQt6==6.6.1
+PyQt6-sip==13.6.0
+
+# Voice Recognition & Audio
+openai-whisper==20231117
+librosa==0.10.0
+sounddevice==0.4.6
+numpy==1.24.3
+
+# Eye & Face Tracking
+mediapipe==0.10.5
+opencv-python==4.8.1.78
+opencv-contrib-python==4.8.1.78
+
+# Mouse & Keyboard Control
+pyautogui==0.9.53
+
+# Browser Automation
+selenium==4.15.2
+webdriver-manager==4.0.1
+
+# GUI Detection & ML
+torch==2.1.1
+torchvision==0.16.1
+transformers==4.35.2
+safetensors==0.4.1
+
+# Utilities
+requests==2.31.0
+Pillow==10.1.0
+pyttsx3==2.90
+
+# Logging & Error Handling
+loguru==0.7.2
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-asyncio==0.21.1
+
+# Development
+black==23.12.0
+flake8==6.1.0
+mypy==1.7.1
+
+# Optional: GPU Acceleration
+# torch-cuda (install separately based on your GPU)

@@ -1,0 +1,68 @@
+# GUIrilla Configuration for Accessibility Automation Agent
+
+guirilla:
+  # Model information
+  model:
+    name: "macpaw-research/GUIrilla-See-0.7B"
+    version: "0.7B"
+    task: "object_detection"
+    device: "cpu"  # "cpu" recommended for low-spec, or "cuda"
+
+  # Quantization for low-spec devices
+  quantization:
+    enabled: true
+    type: "int8"  # "int8", "fp16", or "fp32"
+    optimization: "onnx"  # "onnx" or "native"
+
+  # Inference parameters
+  inference:
+    confidence_threshold: 0.5
+    nms_threshold: 0.3
+    max_detections: 10
+    timeout: 10  # seconds
+    beam_search: 3
+
+  # Visual detection settings
+  visual:
+    enabled: true
+    screenshot_quality: 0.8  # 0.5-1.0
+    resize_strategy: "fit"  # "fit", "stretch", or "crop"
+    max_image_size: 1024  # pixels
+    color_mode: "RGB"
+
+  # Performance optimization
+  performance:
+    cache_model: true
+    model_cache_dir: ".cache/guirilla"
+    batch_processing: false
+    parallel_inference: false
+    cpu_threads: 2
+
+  # Fallback behavior
+  fallback:
+    enabled: true
+    on_timeout: true
+    on_low_confidence: true
+    min_confidence: 0.3
+
+  # Logging
+  logging:
+    enabled: true
+    level: "INFO"
+    log_file: "logs/guirilla.log"
+    log_detections: false
+    save_failed_images: false
+
+  # Model caching
+  cache:
+    enabled: true
+    cache_dir: ".cache/models/guirilla"
+    max_cache_size: 2000  # MB (2GB)
+    auto_cleanup: true
+
+  # Metrics tracking
+  metrics:
+    enabled: true
+    track_performance: true
+    track_fallback_usage: true
+    metrics_file: "logs/guirilla_metrics.json"
