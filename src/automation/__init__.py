@@ -6,10 +6,11 @@ and macro recording/playback. Implemented in Phases 6-8.
 
 Modules:
     - browser_controller: Selenium-based browser automation with voice commands.
-    - (Phase 7) app_launcher: Application discovery and launching.
+    - app_launcher: Windows app discovery and launching with voice commands.
     - (Phase 8) macro_system: Macro recording and playback.
 """
 
 from .browser_controller import BrowserController
+from .app_launcher import AppLauncher
 
-__all__ = ["BrowserController"]
+__all__ = ["BrowserController", "AppLauncher"]
