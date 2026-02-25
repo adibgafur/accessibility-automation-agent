@@ -31,12 +31,16 @@ eye_tracking:
   nose_scale: 1.0
   calibration_points: 9
   jitter_threshold: 5
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
 
 # Blink Detection
 blink_detection:
   single_blink_threshold: 0.3
-  double_blink_timeout: 300  # milliseconds
-  eye_aspect_ratio_threshold: 0.2
+  double_blink_timeout: 300       # ms - window for second blink to count as double
+  eye_aspect_ratio_threshold: 0.2 # EAR below this = eyes closed
+  long_blink_duration_ms: 800     # ms - blink longer than this = long blink (drag)
+  consecutive_frames: 2           # frames eyes must be closed to register a blink
 
 # GUI Detection Settings
 gui_detection:

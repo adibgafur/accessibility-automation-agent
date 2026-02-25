@@ -14,7 +14,15 @@ from .voice_commands import (
     CommandRegistry,
     VoiceCommandPipeline,
 )
-from .eye_tracker import EyeTracker
+from .eye_tracker import (
+    EyeTracker,
+    BlinkType,
+    TrackingState,
+    TrackingFrame,
+    CalibrationData,
+    CalibrationPoint,
+    compute_ear,
+)
 from .mouse_controller import MouseController
 
 __all__ = [
@@ -26,5 +34,11 @@ __all__ = [
     "CommandRegistry",
     "VoiceCommandPipeline",
     "EyeTracker",
+    "BlinkType",
+    "TrackingState",
+    "TrackingFrame",
+    "CalibrationData",
+    "CalibrationPoint",
+    "compute_ear",
     "MouseController",
 ]
