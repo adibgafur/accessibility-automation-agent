@@ -118,6 +118,9 @@ _EN_COMMANDS: List[Tuple[str, str, CommandCategory]] = [
     (r"^refresh$", "browser_refresh", CommandCategory.BROWSER),
     (r"^bookmark$", "bookmark", CommandCategory.BROWSER),
     (r"^(?:address|url)\s+bar$", "address_bar", CommandCategory.BROWSER),
+    (r"^(?:open\s+)?(?:website\s+)?(.+?)(?:\s+dot\s+com)?$", "open_url", CommandCategory.BROWSER),
+    (r"^(?:fill|enter)\s+(?:text|form)?\s+(.+)$", "form_fill", CommandCategory.BROWSER),
+    (r"^(?:click\s+)?(?:button|link)\s+(.+)$", "click_element", CommandCategory.BROWSER),
 
     # --- Macro ---
     (r"^start\s+recording$", "macro_start", CommandCategory.MACRO),
@@ -166,11 +169,16 @@ _BN_COMMANDS: List[Tuple[str, str, CommandCategory]] = [
     (r"^খুলুন\s+(.+)$", "open_app", CommandCategory.NAVIGATION),
     (r"^বন্ধ(?:\s+করুন)?(?:\s+(.+))?$", "close_app", CommandCategory.NAVIGATION),
 
-    # --- Browser ---
+    # --- Browser (Bengali) ---
     (r"^খুঁজুন\s+(.+)$", "browser_search", CommandCategory.BROWSER),
     (r"^নতুন\s+ট্যাব$", "new_tab", CommandCategory.BROWSER),
     (r"^ট্যাব\s+বন্ধ(?:\s+করুন)?$", "close_tab", CommandCategory.BROWSER),
     (r"^রিফ্রেশ$", "browser_refresh", CommandCategory.BROWSER),
+    (r"^ফিরে\s+যান$", "browser_back", CommandCategory.BROWSER),
+    (r"^সামনে\s+যান$", "browser_forward", CommandCategory.BROWSER),
+    (r"^ওয়েবসাইট\s+খুলুন\s+(.+)$", "open_url", CommandCategory.BROWSER),
+    (r"^ফর্ম\s+পূরণ\s+করুন\s+(.+)$", "form_fill", CommandCategory.BROWSER),
+    (r"^(?:বাটন|লিংক)\s+ক্লিক\s+করুন\s+(.+)$", "click_element", CommandCategory.BROWSER),
 
     # --- Macro ---
     (r"^রেকর্ড(?:িং)?\s+শুরু(?:\s+করুন)?$", "macro_start", CommandCategory.MACRO),
