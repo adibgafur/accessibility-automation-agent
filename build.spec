@@ -10,12 +10,13 @@ Output: dist/AccessibilityAgent.exe
 """
 
 import sys
+import os
 from pathlib import Path
 
 block_cipher = None
 
-# Get project root
-project_root = Path(__file__).parent
+# Get project root (current working directory is the project root)
+project_root = os.getcwd()
 
 a = Analysis(
     ['src/main.py'],
@@ -36,7 +37,6 @@ a = Analysis(
         'cv2',
         'selenium',
         'selenium.webdriver',
-        'torch',
         'numpy',
         'librosa',
         'sounddevice',

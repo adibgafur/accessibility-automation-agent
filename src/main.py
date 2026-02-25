@@ -19,6 +19,9 @@ from pathlib import Path
 
 from loguru import logger
 
+# Add src to path for PyInstaller compatibility
+sys.path.insert(0, str(Path(__file__).parent))
+
 from utils.logging_config import setup_logging
 from utils.config_manager import config
 from utils.error_handler import (
