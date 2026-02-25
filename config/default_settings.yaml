@@ -10,9 +10,17 @@ voice:
   enabled: true
   language: "en"  # "en" for English, "bn" for Bengali
   whisper_model: "base"  # "tiny", "base", "small", "medium", "large"
-  device: "cuda"  # "cpu" or "cuda"
+  device: "cuda"  # "cpu" or "cuda" (auto-falls back to cpu)
   confidence_threshold: 0.5
   timeout: 30
+  beam_size: 5
+  temperature: 0.0
+  # Voice Activity Detection (energy-based)
+  vad_energy_threshold: 0.01
+  vad_silence_duration_ms: 800
+  vad_min_speech_duration_ms: 300
+  vad_max_speech_duration_s: 30.0
+  vad_pre_speech_chunks: 10
 
 # Eye Tracking Settings
 eye_tracking:
