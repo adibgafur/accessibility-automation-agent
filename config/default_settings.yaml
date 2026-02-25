@@ -68,6 +68,14 @@ guirilla:
   confidence_threshold: 0.5
   max_detections: 10
 
+# Mouse & Keyboard Settings
+mouse:
+  move_duration: 0.1        # seconds for smooth cursor movement
+  smooth_tween: "easeOutQuad"  # pyautogui tween function for smooth moves
+  type_interval: 0.02       # seconds between each keystroke
+  failsafe: true            # move mouse to corner to abort (pyautogui safety)
+  pause: 0.01               # global pause between pyautogui actions (seconds)
+
 # Browser Settings
 browser:
   driver: "chrome"  # "chrome" or "firefox"
